@@ -171,6 +171,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setTabItems:(NSArray*)tabItems {
+    _scrollView.contentOffset = CGPointMake(0.0, 0.0);
   [super setTabItems:tabItems];
   _contentSizeCached = NO;
   [self updateOverflow];
