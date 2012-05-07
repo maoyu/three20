@@ -25,7 +25,10 @@
 
   BOOL    _contentSizeCached;
   CGSize  _contentSize;
-
+  BOOL    _overflowIndicator;           // 是否显示溢出指示按钮的开关，默认显示。
 }
+
+@property (nonatomic, readonly) UIScrollView * scrollView;
+@property (nonatomic) BOOL overflowIndicator;
 
 @end

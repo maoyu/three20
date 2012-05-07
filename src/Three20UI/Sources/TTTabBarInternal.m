@@ -83,11 +83,16 @@ TT_FIX_CATEGORY_BUG(TTTabBarInternal)
     }
 
   } else {
+      // 左边不留空白。tab宽度设为1/3屏幕宽度。
+      x = 0;
+      const CGFloat kWidth = 320 / 3;
     for (int i = 0; i < _tabViews.count; ++i) {
       TTTab* tab = [_tabViews objectAtIndex:i];
-      [tab sizeToFit];
-      tab.frame = CGRectMake(x, 0, tab.width, self.height);
-      x += tab.width;
+//      [tab sizeToFit];
+//      tab.frame = CGRectMake(x, 0, tab.width, self.height);
+//      x += tab.width;
+      tab.frame = CGRectMake(x, 0, kWidth, self.height);
+      x += kWidth;
     }
   }
 

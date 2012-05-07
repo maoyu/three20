@@ -36,6 +36,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation TTTabStrip
 
+@synthesize scrollView = _scrollView;
+@synthesize overflowIndicator = _overflowIndicator;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame  {
@@ -53,6 +55,7 @@
     self.style = TTSTYLE(tabStrip);
     self.tabStyle = @"tabRound:";
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.overflowIndicator = YES;
   }
 
   return self;
@@ -84,6 +87,10 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)updateOverflow {
+  if (self.overflowIndicator == NO) {
+      return;
+  }
+
   if (_scrollView.contentOffset.x < (_scrollView.contentSize.width-self.width)) {
     if (!_overflowRight) {
       _overflowRight = [[TTView alloc] init];
@@ -128,7 +135,9 @@
 
   CGPoint contentOffset = _scrollView.contentOffset;
   _scrollView.frame = self.bounds;
-  _scrollView.contentSize = CGSizeMake(size.width + kTabMargin, self.height);
+//  _scrollView.contentSize = CGSizeMake(size.width + kTabMargin, self.height);
+    // 最前面不留下kTabMargin长度的空白。
+  _scrollView.contentSize = CGSizeMake(size.width, self.height);
   _scrollView.contentOffset = contentOffset;
 
   _contentSize = size;

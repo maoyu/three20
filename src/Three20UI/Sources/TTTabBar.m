@@ -150,10 +150,14 @@
       self.selectedTabView.selected = YES;
     }
 
-    if ([_delegate respondsToSelector:@selector(tabBar:tabSelected:)]) {
-      [_delegate tabBar:self tabSelected:_selectedTabIndex];
-    }
+//    if ([_delegate respondsToSelector:@selector(tabBar:tabSelected:)]) {
+//      [_delegate tabBar:self tabSelected:_selectedTabIndex];
+//    }
   }
+    // 再次选中后仍旧可以响应触摸。
+    if ([_delegate respondsToSelector:@selector(tabBar:tabSelected:)]) {
+        [_delegate tabBar:self tabSelected:_selectedTabIndex];
+    }
 }
 
 
