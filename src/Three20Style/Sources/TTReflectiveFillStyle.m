@@ -91,7 +91,7 @@
   // The highlights are drawn using an overlayed, semi-transparent gradient.
   // The values here are absolutely arbitrary. They were nabbed by inspecting the colors of
   // the "Delete Contact" button in the Contacts app.
-  UIColor* topStartHighlight = [UIColor colorWithWhite:1.0 alpha:0.685];
+  UIColor* topStartHighlight = [UIColor colorWithWhite:0.8 alpha:0.585];
   UIColor* topEndHighlight = [UIColor colorWithWhite:1.0 alpha:0.13];
   UIColor* clearColor = [UIColor colorWithWhite:1.0 alpha:0.0];
 
@@ -107,7 +107,7 @@
     topStartHighlight, topEndHighlight,
     clearColor,
     clearColor, botEndHighlight};
-  CGFloat locations[] = {0, 0.5, 0.5, 0.6, 1.0};
+  CGFloat locations[] = {0.0, 0.5, 0.5, 0.6, 1.0};
 
   CGGradientRef gradient = [self newGradientWithColors:colors locations:locations count:5];
   CGContextDrawLinearGradient(ctx, gradient, CGPointMake(rect.origin.x, rect.origin.y),
